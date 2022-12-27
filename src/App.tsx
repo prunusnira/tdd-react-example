@@ -5,14 +5,16 @@ import Profile from "./react-component/profile";
 import Counter from "./react-component/counter";
 import TodoForm from "./todo-tdd/todoForm";
 import TodoList from "./todo-tdd/todoList";
+import useTodo from "./todo-tdd/useTodo";
 
 function App() {
+    const { todoList, onInsert } = useTodo();
     return (
         <>
             <Profile username="me" name="test" />
             <Counter />
-            <TodoForm />
-            <TodoList todos={[]} />
+            <TodoForm onInsert={onInsert} />
+            <TodoList todos={todoList} />
         </>
     );
 }

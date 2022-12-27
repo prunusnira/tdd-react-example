@@ -1,13 +1,8 @@
 import TodoItem from "./todoItem";
-
-type TodoType = {
-    id: number;
-    text: string;
-    done: boolean;
-};
+import TodoItemType from "./todoItemType";
 
 type Props = {
-    todos: Array<TodoType>;
+    todos: Map<number, TodoItemType>;
     onToggle?: (id: number) => void;
     onRemove?: (id: number) => void;
 };
@@ -15,14 +10,15 @@ type Props = {
 const TodoList = ({ todos, onToggle, onRemove }: Props) => {
     return (
         <ul>
-            {todos.map((x) => (
+            {Array.from(todos.values()).map((x) => (
                 <TodoItem
-                    todo={x}
                     key={x.id}
+                    todo={x}
                     onToggle={onToggle}
                     onRemove={onRemove}
                 />
             ))}
+            {todos.size === 0 && "NO ITEM"}
         </ul>
     );
 };

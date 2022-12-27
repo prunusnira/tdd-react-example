@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import TodoList from "./todoList";
 
 type Props = {
     onInsert?: (s: string) => void;
@@ -33,7 +32,6 @@ const TodoForm = ({ onInsert }: Props) => {
                 />
                 <button type="submit">등록</button>
             </form>
-            {/* <TodoList /> */}
         </div>
     );
 };
