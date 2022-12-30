@@ -8,13 +8,17 @@ import TodoList from "./todo-tdd/todoList";
 import useTodo from "./todo-tdd/useTodo";
 
 function App() {
-    const { todoList, onInsert } = useTodo();
+    const { todoList, onInsert, onToggle, onRemove } = useTodo();
     return (
         <>
             <Profile username="me" name="test" />
             <Counter />
             <TodoForm onInsert={onInsert} />
-            <TodoList todos={todoList} />
+            <TodoList
+                todos={todoList}
+                onToggle={onToggle}
+                onRemove={onRemove}
+            />
         </>
     );
 }

@@ -10,12 +10,28 @@ const useTodo = () => {
             text: s,
             done: false,
         });
-        setTodoList(todoList);
+        setTodoList(new Map(todoList));
+    };
+
+    const onToggle = (id: number) => {
+        todoList.set(id, {
+            id,
+            text: todoList.get(id)!.text,
+            done: !todoList.get(id)!.done,
+        });
+        setTodoList(new Map(todoList));
+    };
+
+    const onRemove = (id: number) => {
+        todoList.delete(id);
+        setTodoList(new Map(todoList));
     };
 
     return {
         todoList,
         onInsert,
+        onToggle,
+        onRemove,
     };
 };
 
